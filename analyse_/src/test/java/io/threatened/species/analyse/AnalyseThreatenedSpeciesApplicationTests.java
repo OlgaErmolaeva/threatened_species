@@ -4,39 +4,39 @@ import io.threatened.species.analyse.model.Species;
 import io.threatened.species.analyse.service.SpeciesFilteringService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
-import org.springframework.test.context.TestPropertySource;
 
 import java.util.Set;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest()
 @AutoConfigureWireMock(port = 0)
-@TestPropertySource("")
 class AnalyseThreatenedSpeciesApplicationTests {
-
-    @LocalServerPort
-    private int port;
 
     @Autowired
     private SpeciesFilteringService serviceUnderTest;
 
-    @BeforeAll
-    public static void setUp() {
+    @Value("${client.token}")
+    private String token;
+
+    @BeforeEach
+    public void setUp() {
         stubFor(get(urlPathEqualTo("/api/v3/region/list"))
-                .withQueryParam("token", equalTo("9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee"))
+                .withQueryParam("token", equalTo(token))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
                         .withBodyFile("regions.json")));
 
         stubFor(get(urlPathEqualTo("/api/v3/species/region/europe/page/0")) // europe is a region coming from getRandomRegion response from regions.json
-                .withQueryParam("token", equalTo("9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee"))
+                .withQueryParam("token", equalTo(token))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
