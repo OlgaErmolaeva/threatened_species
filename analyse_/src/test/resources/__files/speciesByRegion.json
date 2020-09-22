@@ -1,0 +1,63 @@
+{
+  "count": 3,
+  "region_identifier": "europe",
+  "page": "0",
+  "result": [
+    {
+      "taxonid": 59,
+      "kingdom_name": "ANIMALIA",
+      "phylum_name": "MOLLUSCA",
+      "class_name": "GASTROPODA",
+      "order_name": "STYLOMMATOPHORA",
+      "family_name": "VALLONIIDAE",
+      "genus_name": "Acanthinula",
+      "scientific_name": "Acanthinula spinifera",
+      "infra_rank": null,
+      "infra_name": null,
+      "population": null,
+      "category": "DD"
+    },
+    {
+      "taxonid": 215,
+      "kingdom_name": "ANIMALIA",
+      "phylum_name": "MOLLUSCA",
+      "class_name": "GASTROPODA",
+      "order_name": "ARCHITAENIOGLOSSA",
+      "family_name": "ACICULIDAE",
+      "genus_name": "Acicula",
+      "scientific_name": "Acicula norrisi",
+      "infra_rank": null,
+      "infra_name": null,
+      "population": null,
+      "category": "VU"
+    },
+    {
+      "taxonid": 857,
+      "kingdom_name": "ANIMALIA",
+      "phylum_name": "CHORDATA",
+      "class_name": "MAMMALIA",
+      "order_name": "RODENTIA",
+      "family_name": "DIPODIDAE",
+      "genus_name": "Allactaga",
+      "scientific_name": "Allactaga major",
+      "infra_rank": null,
+      "infra_name": null,
+      "population": null,
+      "category": "NT"
+    },
+    {
+      "taxonid": 875,
+      "kingdom_name": "ANIMALIA",
+      "phylum_name": "CHORDATA",
+      "class_name": "MAMMALIA",
+      "order_name": "RODENTIA",
+      "family_name": "CRICETIDAE",
+      "genus_name": "Allocricetulus",
+      "scientific_name": "Allocricetulus eversmanni",
+      "infra_rank": null,
+      "infra_name": null,
+      "population": null,
+      "category": "CR"
+    }
+  ]
+}

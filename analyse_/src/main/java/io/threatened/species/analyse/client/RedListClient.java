@@ -25,6 +25,12 @@ public class RedListClient {
 
     @Value("${client.token}")
     private String token;
+    @Value("${client.region.url}")
+    private String regionUrl;
+    @Value("${client.species.by.region.url}")
+    private String speciesByRegionUrl;
+    @Value("${client.conservation.measures.url}")
+    private String conservationMeasuresUrl;
 
 
     @Autowired
@@ -34,7 +40,7 @@ public class RedListClient {
 
         if (randomRegion != null) {
             String regionId = randomRegion.getIdentifier();
-            String speciesURL = String.format("http://apiv3.iucnredlist.org/api/v3/species/region/%s/page/%s?token=%s", regionId, page, token);
+            String speciesURL = String.format("%s/%s/page/%s?token=%s", speciesByRegionUrl, regionId, page, token);
             SpeciesWrapper speciesWrapper;
 
             try {
@@ -51,7 +57,7 @@ public class RedListClient {
     }
 
     public Region getRandomRegion() {
-        String countryURL = String.format("http://apiv3.iucnredlist.org/api/v3/region/list?token=%s", token);
+        String countryURL = String.format("%s?token=%s", regionUrl, token);
         Region randomRegion = null;
         RegionWrapper regionWrapper;
 
@@ -73,7 +79,7 @@ public class RedListClient {
 
     public List<ConservationMeasure> getConservationMeasuresById(Integer id) {
         if (id != null) {
-            String speciesURL = String.format("http://apiv3.iucnredlist.org/api/v3/measures/species/id/%s?token=%s", id, token);
+            String speciesURL = String.format("%s/%s?token=%s",conservationMeasuresUrl, id, token);
             ConservationMeasureWrapper measuresWrapper;
             try {
                 measuresWrapper = restTemplate.getForObject(speciesURL, ConservationMeasureWrapper.class);
